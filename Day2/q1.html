@@ -1,1 +1,44 @@
+<!-- todo main -->
 
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>
+            ToDo By Aritra
+        </title>
+        <style>
+            button{
+                cursor:pointer;
+            }
+        </style>
+    </head>
+	
+	<body>
+	  <div>
+	    <input type="text"></input>
+	    <button onclick="addTodo()">Add Todo!</button>
+	  </div>
+	</body>
+	
+    <script>
+        let ctr=1;
+        function deleteTodo(index){
+            const element = document.getElementById(index);
+            element.parentNode.removeChild(element);
+        }
+
+        function addTodo(){
+            const inputEl=document.querySelector("input");//The inputEl object refers to the DOM element itself,
+            // which contains a lot more than just the value, such as attributes, event listeners, and other
+            // properties. 
+            const value=inputEl.value;// this is how we extract the inner value of the input element
+            
+            const newDivEl=document.createElement("div");
+            newDivEl.setAttribute("id",ctr);// so basically we are creating a id here 
+            newDivEl.innerHTML="<div>" + value + "<button onclick='deleteTodo(" + ctr + ")'>delete</button></div>";
+
+            document.querySelector("body").appendChild(newDivEl);
+            ctr=ctr+1;
+        }
+    </script>
+</html>
